@@ -1,4 +1,4 @@
-import CustomText from "@/components/ CustomText";
+import CustomText from "@/components/CustomText";
 import CustomButton from "@/components/CustomButton";
 import { spacing } from "@/themes";
 import React from "react";
@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { router } from "expo-router";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -24,6 +25,7 @@ export default function logIn() {
         type="TitleExtraBig"
         text={"¡Hola!\nOrdena ahora"}
         numberOfLines={2}
+        lineHeight={45}
       />
       <View
         style={{
@@ -39,7 +41,7 @@ export default function logIn() {
           resizeMode="cover"
         />
       </View>
-      <CustomButton title="Crear cuenta" onPress={() => {}} />
+      <CustomButton title="Crear cuenta" onPress={() => router.push('/signUp')} disabled={false}/>
       <View style={styles.loginContainer}>
         <Text style={styles.loginText}>¿Ya tienes una cuenta? </Text>
         <TouchableOpacity onPress={() => {}}>
