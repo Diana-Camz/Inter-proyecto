@@ -1,15 +1,18 @@
+import { TextStyle } from "react-native";
+
 export type FontStyles = { [key: string]: { 
     fontFamily: string; 
     fontSize: number, 
-    fontWeight: string | number, 
+    fontWeight: string, 
     lineHeight?: number, 
     letterSpacing?: number 
+    textDecorationLine?: string,
 } };
 
-export const fonts: FontStyles = {
+export const fonts: Record<string, TextStyle> = {
   TitleExtraBig: {
     fontFamily: `Plus Jakarta Sans`,
-    fontWeight: 800,
+    fontWeight: '800',
     fontSize: 36,
     lineHeight: 100,
     letterSpacing: 0
@@ -31,7 +34,7 @@ export const fonts: FontStyles = {
   TextRegular: {
     fontFamily: `Plus Jakarta Sans`,
     fontWeight: 'medium',
-    fontSize: 13,
+    fontSize: 14,
     lineHeight: 15.6,
     letterSpacing: 0
   },
@@ -63,5 +66,21 @@ export const fonts: FontStyles = {
     lineHeight: 14.4,
     letterSpacing: 0
   },
+  link: {
+    fontFamily: `Plus Jakarta Sans`,
+    fontWeight: 'bold',
+    fontSize: 14,
+    lineHeight: 30,
+    letterSpacing: 0,
+    textDecorationLine: "underline",
+  },
+  linkSmall: {
+    fontFamily: `Plus Jakarta Sans`,
+    fontWeight: 'bold',
+    fontSize: 12,
+    lineHeight: 30,
+    letterSpacing: 0,
+    textDecorationLine: "underline",
+  }
   
 };
