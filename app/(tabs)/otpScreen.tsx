@@ -81,7 +81,7 @@ const OtpScreen: React.FC<OtpScreenProps> = ({
     };
 
     const renderCell: CodeFieldProps['renderCell'] = ({ index, symbol, isFocused }) => (
-        <View style={[otpScreenStyles.cell, isFocused && otpScreenStyles.focusCell]} key={index}>
+        <View style={[otpScreenStyles.cell]} key={index}>
             <Text style={otpScreenStyles.cellText}>
                 {symbol || (isFocused ? <Cursor /> : null)}
             </Text>
@@ -94,7 +94,7 @@ const OtpScreen: React.FC<OtpScreenProps> = ({
 
                 <Text style={otpScreenStyles.title}>Código de Autenticación</Text>
                 <Text style={otpScreenStyles.subtitle}>
-                    Hemos enviado un código de autenticación OTP a tu numero de teléfono {<Text style={otpScreenStyles.resendLink}>{phoneNumber}</Text>}.
+                    Hemos enviado un código de autenticación OTP al numero {<Text style={otpScreenStyles.resendLink}>{phoneNumber}</Text>}.
                     Ingresa el código para verificar y continuar.
                 </Text>
 

@@ -36,11 +36,6 @@ export const otpScreenStyles = StyleSheet.create({
         borderColor: colors.gray,
         borderWidth: 2,
     },
-    focusCell: {
-        borderColor: colors.black,
-        borderWidth: 1,
-        backgroundColor: colors.white,
-    },
     cellText: {
         fontSize: 24,
         color: colors.black,
