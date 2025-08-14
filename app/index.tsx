@@ -11,18 +11,24 @@ import SplashScreen from "./splashScreen";
 
 export default function App() {
   const router = useRouter();
+
   const [fontsLoaded] = useFonts({
+    // Google Fonts
     PlusJakartaSans_400Regular,
     PlusJakartaSans_500Medium,
     PlusJakartaSans_700Bold,
     PlusJakartaSans_800ExtraBold,
+
+    // Custom Fonts
+    "AvenirNextCondensed-Regular": require("../assets/fonts/avenir-next-condensed-regular.otf"),
+    "AvenirNextCondensed-Bold": require("../assets/fonts/avenir-next-condensed-bold.ttf"),
   });
 
   const [showSplash, setShowSplash] = useState<boolean>(true);
 
   useEffect(() => {
     if (!showSplash && fontsLoaded) {
-      router.replace("/logIn");
+      router.replace("/landing");
     }
   }, [showSplash, fontsLoaded, router]);
 

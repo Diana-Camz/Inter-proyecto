@@ -1,8 +1,8 @@
+import { customButton } from "@/styles/components/custom-button";
 import { colors } from "@/themes";
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import CustomText from "./CustomText";
-import { customButton } from "@/styles/components/custom-button";
 
 type ButtonProps = {
   title: string;
@@ -10,10 +10,17 @@ type ButtonProps = {
   onPress: () => void;
 };
 
-export default function CustomButton({ title, onPress, disabled = false }: ButtonProps) {
+export default function CustomButton({
+  title,
+  onPress,
+  disabled = false,
+}: ButtonProps) {
   return (
     <TouchableOpacity
-      style={[customButton.container, disabled ? customButton.backgroundGray : customButton.backgroundBlack]}
+      style={[
+        customButton.container,
+        disabled ? customButton.backgroundGray : customButton.backgroundBlack,
+      ]}
       onPress={onPress}
       activeOpacity={0.8}
       disabled={disabled}

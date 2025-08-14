@@ -9,7 +9,7 @@ import { router } from "expo-router";
 import React from "react";
 import { TouchableOpacity, View } from "react-native";
 
-export default function logIn() {
+export default function Ordena() {
   return (
     <View style={[spacing.safeArea, spacing.safeStatusBar, signUp.container]}>
       <View>
