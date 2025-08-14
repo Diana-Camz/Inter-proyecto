@@ -1,99 +1,73 @@
-import CustomText from "@/components/CustomText";
 import CustomButton from "@/components/CustomButton";
-import { spacing } from "@/themes";
-import React from "react";
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import CustomInput from "@/components/CustomInput";
+import CustomText from "@/components/CustomText";
+import { signUp } from "@/styles/screens/sign-up";
+import { colors, spacing } from "@/themes";
+import Entypo from "@expo/vector-icons/Entypo";
+import Feather from "@expo/vector-icons/Feather";
 import { router } from "expo-router";
-
-const screenWidth = Dimensions.get("window").width;
+import React from "react";
+import { TouchableOpacity, View } from "react-native";
 
 export default function logIn() {
   return (
-    <View style={[spacing.safeArea, spacing.safeStatusBar, styles.container]}>
-      <Image
-        source={require("../assets/images/Interestelar_Name.png")}
-        style={{ width: 180, height: 32 }}
-      />
-      <CustomText
-        type="TitleExtraBig"
-        text={"¡Hola!\nOrdena ahora"}
-        numberOfLines={2}
-        lineHeight={45}
-      />
-      <View
-        style={{
-          marginHorizontal: -16,
-          width: "100%",
-          height: 322,
-          alignSelf: "flex-start",
-        }}
-      >
-        <Image
-          source={require("../assets/images/LogIn_Coffes.png")}
-          style={styles.image}
-          resizeMode="cover"
+    <View style={[spacing.safeArea, spacing.safeStatusBar, signUp.container]}>
+      <View>
+        <TouchableOpacity
+          onPress={() => router.back()}
+          style={signUp.goBackButton}
+        >
+          <Entypo name="chevron-small-left" size={50} color={colors.black} />
+        </TouchableOpacity>
+        <CustomText type="TitleBig" text={"Crear cuenta"} numberOfLines={2} />
+      </View>
+      <View style={signUp.containerInputs}>
+        <CustomInput
+          type={"text"}
+          label={"Nombre"}
+          placeholder={"Nombre Completo"}
+        />
+        <CustomInput type={"text"} label={"Email"} placeholder={"Email"} />
+        <CustomInput
+          type={"text"}
+          label={"Número de celular"}
+          placeholder={"Número de celular"}
+        />
+        <CustomInput
+          type={"text"}
+          label={"Cumpleaños"}
+          placeholder={"Cumpleaños"}
         />
       </View>
-      <CustomButton title="Crear cuenta" onPress={() => router.push('/signUp')} disabled={false}/>
-      <View style={styles.loginContainer}>
-        <Text style={styles.loginText}>¿Ya tienes una cuenta? </Text>
+      <View style={signUp.containerConditions}>
+        <View style={signUp.containerCheckBox}>
+          <Feather name={"square"} size={30} color={colors.gray} />
+        </View>
+        <View style={signUp.containerConditionsText}>
+          <CustomText type="TextSmall">
+            Al crear una cuenta, aceptas nuestros{" "}
+            <CustomText
+              type="linkSmall"
+              onPress={() => console.log("Términos clic")}
+            >
+              Términos y Condiciones
+            </CustomText>
+          </CustomText>
+        </View>
+      </View>
+      <View style={signUp.containerButton}>
+        <CustomButton
+          title="Crear cuenta"
+          onPress={() => {}}
+          disabled={false}
+        />
+      </View>
+      <View style={signUp.containerLogin}>
+        <CustomText type={"TextRegular"} text={"¿Ya tienes una cuenta?"} />
         <TouchableOpacity onPress={() => {}}>
-          <Text style={styles.loginLink}>Inicia sesión</Text>
+          <CustomText type={"link"} text={"Inicia sesión"} />
         </TouchableOpacity>
       </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    justifyContent: "space-around",
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    marginTop: 40,
-  },
-  subtitle: {
-    fontSize: 18,
-    marginTop: 12,
-    marginBottom: 20,
-    color: "#333",
-  },
-  image: {
-    width: screenWidth + 16,
-    height: 322,
-  },
-  button: {
-    backgroundColor: "#007AFF",
-    paddingVertical: 14,
-    paddingHorizontal: 60,
-    borderRadius: 8,
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  loginContainer: {
-    flexDirection: "row",
-  },
-  loginText: {
-    fontSize: 14,
-    color: "#666",
-  },
-  loginLink: {
-    fontSize: 14,
-    color: "#007AFF",
-    textDecorationLine: "underline",
-  },
-});
