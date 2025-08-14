@@ -1,41 +1,45 @@
-import React, { JSX, useState } from 'react';
+import Entypo from '@expo/vector-icons/Entypo';
+import { colors } from '@themes';
+import React, { JSX } from 'react';
 import {
-  View,
-  TextInput,
-  TouchableOpacity,
   KeyboardTypeOptions,
   StyleProp,
+  TextInput,
+  TextInputProps,
+  View,
   ViewStyle,
+  Image
 } from 'react-native';
-import Entypo from '@expo/vector-icons/Entypo';
-import CustomText from './CustomText';
 import { customInput } from '../styles/components/custom-input';
-import { fonts, colors } from '@themes';
 
-type InputType = 'text' | 'email' | 'number' | 'date';
+type InputType = 'text' | 'email' | 'phone' | 'date';
 
 type CustomInputProps = {
   type: InputType;
   label: string;
   placeholder: string;
-  //valueInput: string;
-  //onChange?: (value: string) => void;
+  valueInput?: string;
+  onChange?: (value: string) => void;
   disabled?: boolean;
+  containerStyle?: StyleProp<ViewStyle>
+  inputProps?: TextInputProps;
 };
 
 export default function CustomInput({
   type,
   label,
   placeholder,
-  //valueInput,
- // onChange,
+  valueInput,
+  onChange,
   disabled = false,
+  containerStyle,
+  inputProps
 }: CustomInputProps): JSX.Element {
 
   const keyboardTypeMap: Record<InputType, KeyboardTypeOptions> = {
     text: 'default',
     email: 'email-address',
-    number: 'number-pad',
+    phone: 'phone-pad',
     date: 'number-pad',
   };
 
@@ -43,19 +47,19 @@ export default function CustomInput({
   return (
     <View style={customInput.wrapper}>
       <View style={customInput.container}>
-        {type === 'number' && (
+        {type === 'phone' && (
           <View style={customInput.inputIcon}>
-            <Entypo name="chevron-small-down" size={12} color={colors.gray} />
+            <Image source={require('../assets/images/mexico1.png')} style={customInput.imageMexico}/>
+            <Entypo name="chevron-small-down" size={40} color={colors.gray} />
           </View>
         )}
         <TextInput
           editable={!disabled}
-          //value={handleValue()}
-          //onChangeText={handleOnChange}
+          value={valueInput}
+          onChangeText={onChange}
           placeholder={placeholder}
           placeholderTextColor={colors.sand}
-          //style={}
-          keyboardType={'default'}
+          keyboardType={keyboardTypeMap[type]}
           autoCapitalize="none"
         />
       </View>
