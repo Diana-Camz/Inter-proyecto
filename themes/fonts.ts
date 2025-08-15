@@ -12,7 +12,6 @@ export const fonts: Record<string, TextStyle> = {
   TitleExtraBig: {
     fontFamily: `Plus Jakarta Sans`,
     fontWeight: "800",
-
     fontSize: 36,
   },
   TitleBig: {
