@@ -56,6 +56,7 @@ export default function CustomInput({
         <TextInput
           editable={!disabled}
           value={valueInput}
+          style={customInput.containerTextInput}
           onChangeText={onChange}
           placeholder={placeholder}
           placeholderTextColor={colors.sand}
