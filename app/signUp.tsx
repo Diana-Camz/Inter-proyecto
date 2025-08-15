@@ -53,7 +53,7 @@ export default function logIn() {
       <View style={signUp.containerLogin}>
         <CustomText type={"TextRegular"} text={"¿Ya tienes una cuenta?"} />
         <TouchableOpacity onPress={() => router.push("/logIn")}>
-          <CustomText type={"link"} text={"Inicia sesión"} />
+          <CustomText type={"linkRegular"} text={"Inicia sesión"} />
         </TouchableOpacity>
       </View>
     </View>

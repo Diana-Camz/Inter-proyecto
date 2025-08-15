@@ -2,11 +2,12 @@ import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import CustomText from "@/components/CustomText";
 import GoBackButton from "@/components/GoBackButton";
+import TextLinkRow from "@/components/TextLinkRow";
 import { logInStyles as styles } from "@/styles/screens/log-in.styles";
 import { spacing } from "@/themes";
 import { router } from "expo-router";
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 
 export default function LogIn() {
   const [phoneNumber, setPhoneNumber] = React.useState("");
@@ -29,12 +30,12 @@ export default function LogIn() {
         onPress={() => {}}
         disabled={false}
       />
-      <View style={styles.containerLogin}>
-        <CustomText type={"TextRegular"} text={"¿No tienes una cuenta? "} />
-        <TouchableOpacity onPress={() => router.push("/signUp")}>
-          <CustomText type={"linkRegular"} text={"Crear cuenta"} />
-        </TouchableOpacity>
-      </View>
+      <TextLinkRow
+        lines={true}
+        message="¿No tienes una cuenta?"
+        linkText="Crear cuenta"
+        onPress={() => router.push("/signUp")}
+      />
     </View>
   );
 }
