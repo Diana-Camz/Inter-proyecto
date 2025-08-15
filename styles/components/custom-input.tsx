@@ -21,7 +21,7 @@ export const customInputStyles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.darkGray,
   },
-  inputIcon: {
+  countryPickerButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",

@@ -1,7 +1,13 @@
 import Entypo from "@expo/vector-icons/Entypo";
 import { colors, fonts } from "@themes";
 import React, { JSX, useEffect, useRef, useState } from "react";
-import { Animated, KeyboardTypeOptions, TextInput, View } from "react-native";
+import {
+  Animated,
+  KeyboardTypeOptions,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import CountryPicker, { Country } from "react-native-country-picker-modal";
 import { customInputStyles as styles } from "../styles/components/custom-input";
 import { CustomInputProps, InputType } from "../types/components/customInput";
@@ -52,6 +58,8 @@ export default function CustomInput({
     name: "Mexico",
   } as Country);
 
+  const [countryPickerVisible, setCountryPickerVisible] = useState(false);
+
   const [isFocused, setIsFocused] = useState(false);
   const animatedLabel = useRef(new Animated.Value(valueInput ? 1 : 0)).current;
 
@@ -77,24 +85,28 @@ export default function CustomInput({
     color: colors.sand,
   };
 
-  const onSelectCountry = (selectedCountry: Country) =>
-    setCountry(selectedCountry);
-
   return (
     <View style={[styles.wrapper, containerStyle]}>
       <View style={[styles.container, isFocused && styles.containerFocused]}>
         {type === "phone" && (
-          <View style={styles.inputIcon}>
+          <TouchableOpacity
+            onPress={() => setCountryPickerVisible(true)}
+            style={styles.countryPickerButton}
+          >
             <CountryPicker
               countryCode={country.cca2}
               withFlag
               withCallingCode
               withFilter
-              onSelect={onSelectCountry}
-              containerButtonStyle={{}}
+              onSelect={(selected) => {
+                setCountry(selected);
+                setCountryPickerVisible(false);
+              }}
+              visible={countryPickerVisible}
+              onClose={() => setCountryPickerVisible(false)}
             />
             <Entypo name="chevron-small-down" size={35} color={colors.gray} />
-          </View>
+          </TouchableOpacity>
         )}
 
         <Animated.Text style={labelStyle}>{label}</Animated.Text>
