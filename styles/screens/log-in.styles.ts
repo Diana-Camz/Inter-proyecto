@@ -1,56 +1,55 @@
 import { colors } from "@/themes";
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet, ViewStyle } from "react-native";
 
-const screenWidth = Dimensions.get("window").width;
+export interface CreateBusinessScreenStyles {
+  container: ViewStyle;
+  goBackButton: ViewStyle;
+  containerInputs: ViewStyle;
+  containerConditions: ViewStyle;
+  containerCheckBox: ViewStyle;
+  containerConditionsText: ViewStyle;
+  containerLogin: ViewStyle;
+}
 
-export const logInSyles = StyleSheet.create({
+export const logInStyles = StyleSheet.create<CreateBusinessScreenStyles>({
   container: {
-    alignItems: "center",
+    flex: 1,
     justifyContent: "space-around",
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    marginTop: 40,
+  goBackButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 50,
+    marginBottom: 25,
+    backgroundColor: colors.sandLight,
   },
-  subtitle: {
-    fontSize: 18,
-    marginTop: 12,
-    marginBottom: 20,
-    color: colors.black,
+  containerInputs: {
+    width: "auto",
+    height: "auto",
+    gap: 12,
   },
-  coffeesImage: {
-    width: screenWidth + 16,
-    height: 322,
-  },
-  coffeesImageContainer: {
-    marginHorizontal: -16,
-    width: "100%",
-    height: 322,
-    alignSelf: "flex-start",
-  },
-  logoImage: { width: 180, height: 32 },
-  button: {
-    backgroundColor: colors.black,
-    paddingVertical: 14,
-    paddingHorizontal: 60,
-    marginBottom: 20,
-  },
-  buttonText: {
-    color: colors.white,
-    fontSize: 16,
-    fontWeight: "600",
-  },
-  loginContainer: {
+  containerConditions: {
+    width: 380,
+    paddingLeft: 20,
     flexDirection: "row",
+    alignItems: "center",
   },
-  loginText: {
-    fontSize: 14,
-    color: colors.black,
+  containerCheckBox: {
+    marginRight: 8,
   },
-  loginLink: {
-    fontSize: 14,
-    color: colors.black,
-    textDecorationLine: "underline",
+  containerConditionsText: {
+    width: 335,
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  containerLogin: {
+    flexDirection: "row",
+    justifyContent: "center",
+    paddingVertical: 16,
+    gap: 5,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray,
+    borderTopColor: colors.gray,
   },
 });

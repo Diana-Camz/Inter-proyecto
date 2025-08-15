@@ -1,71 +1,32 @@
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import CustomText from "@/components/CustomText";
-import { signUp } from "@/styles/screens/sign-up";
-import { colors, spacing } from "@/themes";
-import Entypo from "@expo/vector-icons/Entypo";
-import Feather from "@expo/vector-icons/Feather";
+import GoBackButton from "@/components/GoBackButton";
+import { logInStyles as styles } from "@/styles/screens/log-in.styles";
+import { spacing } from "@/themes";
 import { router } from "expo-router";
 import React from "react";
 import { TouchableOpacity, View } from "react-native";
 
-export default function Ordena() {
+export default function LogIn() {
   return (
-    <View style={[spacing.safeArea, spacing.safeStatusBar, signUp.container]}>
+    <View style={[spacing.safeArea, spacing.safeStatusBar, styles.container]}>
       <View>
-        <TouchableOpacity
-          onPress={() => router.back()}
-          style={signUp.goBackButton}
-        >
-          <Entypo name="chevron-small-left" size={50} color={colors.black} />
-        </TouchableOpacity>
-        <CustomText type="TitleBig" text={"Crear cuenta"} numberOfLines={2} />
+        <GoBackButton />
+        <CustomText type="TitleBig" text={"Iniciar sesión"} numberOfLines={2} />
       </View>
-      <View style={signUp.containerInputs}>
-        <CustomInput
-          type={"text"}
-          label={"Nombre"}
-          placeholder={"Nombre Completo"}
-        />
-        <CustomInput type={"text"} label={"Email"} placeholder={"Email"} />
-        <CustomInput
-          type={"text"}
-          label={"Número de celular"}
-          placeholder={"Número de celular"}
-        />
-        <CustomInput
-          type={"text"}
-          label={"Cumpleaños"}
-          placeholder={"Cumpleaños"}
-        />
+      <View style={styles.containerInputs}>
+        <CustomInput type={"phone"} label={"Número de celular"} />
       </View>
-      <View style={signUp.containerConditions}>
-        <View style={signUp.containerCheckBox}>
-          <Feather name={"square"} size={30} color={colors.gray} />
-        </View>
-        <View style={signUp.containerConditionsText}>
-          <CustomText type="TextSmall">
-            Al crear una cuenta, aceptas nuestros{" "}
-            <CustomText
-              type="linkSmall"
-              onPress={() => console.log("Términos clic")}
-            >
-              Términos y Condiciones
-            </CustomText>
-          </CustomText>
-        </View>
-      </View>
-      <View style={signUp.containerButton}>
-        <CustomButton
-          title="Crear cuenta"
-          onPress={() => {}}
-          disabled={false}
-        />
-      </View>
-      <View style={signUp.containerLogin}>
-        <CustomText type={"TextRegular"} text={"¿Ya tienes una cuenta?"} />
-        <TouchableOpacity onPress={() => {}}>
-          <CustomText type={"link"} text={"Inicia sesión"} />
+      <CustomButton
+        title="Iniciar sesión"
+        onPress={() => {}}
+        disabled={false}
+      />
+      <View style={styles.containerLogin}>
+        <CustomText type={"TextRegular"} text={"¿No tienes una cuenta?"} />
+        <TouchableOpacity onPress={() => router.push("/signUp")}>
+          <CustomText type={"link"} text={"Crear cuenta"} />
         </TouchableOpacity>
       </View>
     </View>
