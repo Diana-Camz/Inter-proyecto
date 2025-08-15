@@ -22,22 +22,10 @@ export default function logIn() {
         <CustomText type="TitleBig" text={"Crear cuenta"} numberOfLines={2} />
       </View>
       <View style={signUp.containerInputs}>
-        <CustomInput
-          type={"text"}
-          label={"Nombre"}
-          placeholder={"Nombre Completo"}
-        />
-        <CustomInput type={"text"} label={"Email"} placeholder={"Email"} />
-        <CustomInput
-          type={"text"}
-          label={"Número de celular"}
-          placeholder={"Número de celular"}
-        />
-        <CustomInput
-          type={"text"}
-          label={"Cumpleaños"}
-          placeholder={"Cumpleaños"}
-        />
+        <CustomInput type={"text"} label={"Nombre"} />
+        <CustomInput type={"text"} label={"Email"} />
+        <CustomInput type={"text"} label={"Número de celular"} />
+        <CustomInput type={"text"} label={"Cumpleaños"} />
       </View>
       <View style={signUp.containerConditions}>
         <View style={signUp.containerCheckBox}>
@@ -64,7 +52,7 @@ export default function logIn() {
       </View>
       <View style={signUp.containerLogin}>
         <CustomText type={"TextRegular"} text={"¿Ya tienes una cuenta?"} />
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => router.push("/logIn")}>
           <CustomText type={"link"} text={"Inicia sesión"} />
         </TouchableOpacity>
       </View>
