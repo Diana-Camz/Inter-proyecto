@@ -45,21 +45,21 @@ export default function CustomInput({
     let formatted = text;
 
     if (type === "phone") {
-      // Delete all non-digit characters
-      const digits = text.replace(/\D/g, "");
+      const digits = text.replace(/\D/g, "").slice(0, 10); // max 10 digits
 
-      // Format: 3 first digits in parentheses + space
-
-      if (digits.length <= 3) {
+      if (digits.length === 0) {
+        formatted = "";
+      } else if (digits.length <= 3) {
         formatted = `(${digits}`;
-      } else if (digits.length <= 10) {
+      } else if (digits.length <= 6) {
         formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
       } else {
-        // Limit to 10 digits
-        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 10)}`;
+        formatted = `(${digits.slice(0, 3)}) ${digits.slice(
+          3,
+          6
+        )} ${digits.slice(6)}`;
       }
     }
-
     if (onChange) {
       onChange(formatted);
     }
