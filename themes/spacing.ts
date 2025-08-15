@@ -1,4 +1,4 @@
-import { StyleSheet, Platform, ViewStyle } from 'react-native';
+import { Platform, StyleSheet, ViewStyle } from 'react-native';
 import { colors } from './colors';
 
 interface SpacingStyles {
@@ -11,7 +11,7 @@ export const spacing = StyleSheet.create<SpacingStyles>({
   safeArea: {
     display: 'flex',
     paddingTop: 0,
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
     backgroundColor: colors.white,
     width: '100%',
     height: '100%',

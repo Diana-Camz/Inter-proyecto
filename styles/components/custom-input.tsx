@@ -6,8 +6,8 @@ export const customInput = StyleSheet.create({
     paddingVertical: 10,
   },
   container: {
-    width: 335,
-    height: 60,
+    alignSelf: 'stretch',
+    minHeight: 56, 
     flexDirection: 'row',
     justifyContent: 'flex-start',
     backgroundColor: colors.sandLight,
@@ -16,6 +16,12 @@ export const customInput = StyleSheet.create({
     borderColor: colors.sand,
     paddingHorizontal: 16,
     gap: 10,
+  },
+  containerTextInput: {
+    flex: 1,
+    paddingVertical: 0,
+    includeFontPadding: false,
+    textAlignVertical: 'center'
   },
   inputIcon: {
     flexDirection: 'row',
