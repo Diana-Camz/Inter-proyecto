@@ -43,6 +43,7 @@ export const landingStyles = StyleSheet.create({
   },
   loginContainer: {
     flexDirection: "row",
+    alignItems: "center",
   },
   loginText: {
     fontSize: 14,

@@ -30,9 +30,9 @@ export default function LogIn() {
         disabled={false}
       />
       <View style={styles.containerLogin}>
-        <CustomText type={"TextRegular"} text={"¿No tienes una cuenta?"} />
+        <CustomText type={"TextRegular"} text={"¿No tienes una cuenta? "} />
         <TouchableOpacity onPress={() => router.push("/signUp")}>
-          <CustomText type={"link"} text={"Crear cuenta"} />
+          <CustomText type={"linkRegular"} text={"Crear cuenta"} />
         </TouchableOpacity>
       </View>
     </View>

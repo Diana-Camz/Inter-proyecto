@@ -11,7 +11,7 @@ type TextTypes =
   | "TextSmall"
   | "label"
   | "LabelSmall"
-  | "link"
+  | "linkRegular"
   | "linkSmall";
 
 type CustomTextProps = {
