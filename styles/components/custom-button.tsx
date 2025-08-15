@@ -1,5 +1,5 @@
-import { StyleSheet, ViewStyle } from 'react-native';
-import { colors } from 'themes/colors';
+import { StyleSheet, ViewStyle } from "react-native";
+import { colors } from "themes/colors";
 
 export interface ButtonStyles {
   container: ViewStyle;
@@ -8,7 +8,7 @@ export interface ButtonStyles {
 }
 export const customButton = StyleSheet.create<ButtonStyles>({
   container: {
-    width: '100%',
+    width: "100%",
     height: 56,
     borderRadius: 28,
     justifyContent: "center",

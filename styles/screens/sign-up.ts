@@ -1,5 +1,5 @@
-import { colors } from '@/themes';
-import { StyleSheet, ViewStyle } from 'react-native';
+import { colors } from "@/themes";
+import { StyleSheet, ViewStyle } from "react-native";
 
 export interface CreateBusinessScreenStyles {
   container: ViewStyle;
@@ -26,8 +26,8 @@ export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
     backgroundColor: colors.sandLight,
   },
   containerInputs: {
-    width: '100%',
-    height: 'auto',
+    width: "auto",
+    height: "auto",
     gap: 12,
   },
   containerConditions: {
@@ -57,5 +57,5 @@ export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
     borderBottomWidth: 1,
     borderBottomColor: colors.gray,
     borderTopColor: colors.gray,
-},
+  },
 });

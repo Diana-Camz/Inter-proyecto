@@ -3,9 +3,10 @@ export type ColorPallete = {
 };
 
 export const colors: ColorPallete = {
-  black: '#0D0D1B',
-  white: '#FDFCFB',
-  gray: '#D7DBE2',
-  sand: '#ABA396',
-  sandLight: '#FCFCFB'
+  black: "#0D0D1B",
+  white: "#FDFCFB",
+  darkGray: "#979CA5",
+  gray: "#D7DBE2",
+  sand: "#ABA396",
+  sandLight: "#FCFCFB",
 };
