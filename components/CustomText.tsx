@@ -16,14 +16,14 @@ type TextTypes =
 
 type CustomTextProps = {
   text?: string;
-  type:TextTypes;
+  type: TextTypes;
   numberOfLines?: number;
   style?: StyleProp<TextStyle>;
   onPress?: () => void;
   color?: string;
   lineHeight?: number;
   children?: React.ReactNode;
- } & Omit<TextProps, "style" | "onPress" | "children">;
+} & Omit<TextProps, "style" | "onPress" | "children">;
 
 export default function CustomText({
   text,
@@ -33,12 +33,10 @@ export default function CustomText({
   style,
   lineHeight,
   onPress,
-  children
-
+  children,
 }: CustomTextProps): React.JSX.Element {
-  const textStyle = type;
   const textStyleKey = type;
-  const baseStyle = fonts[textStyleKey]
+  const baseStyle = fonts[textStyleKey];
   return (
     <Text
       style={[baseStyle, { color, lineHeight }, style]}
