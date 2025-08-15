@@ -9,11 +9,8 @@ export const otpScreenStyles = StyleSheet.create({
         backgroundColor: colors.white,
         justifyContent: 'flex-start',
     },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginBottom: 15,
-        color: colors.black,
+    titleContainer: {
+        marginBottom: 10,
     },
     subtitle: {
         fontSize: 16,
@@ -23,12 +20,12 @@ export const otpScreenStyles = StyleSheet.create({
     },
     codeFieldRoot: {
         marginTop: 10,
-        marginBottom: 30,
+        marginBottom: 10,
         justifyContent: 'center',
     },
     cell: {
-        width: 48,
-        height: 56,
+        width: 50,
+        height: 60,
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
@@ -41,9 +38,7 @@ export const otpScreenStyles = StyleSheet.create({
         color: colors.black,
         fontWeight: '800',
     },
-    resendButton: {
-        marginBottom: 40,
-    },
+
     resendText: {
         textAlign: 'center',
         color: colors.black,
@@ -57,20 +52,20 @@ export const otpScreenStyles = StyleSheet.create({
     resendField: {
         justifyContent: 'center',
         flexDirection: 'row',
+        marginTop: 10,
+        marginBottom: 20,
     },
     disabledResend: {
         color: colors.gray,
     },
-    validateButton: {
-        paddingVertical: 16,
-        borderRadius: 50,
-        alignItems: 'center',
+    resendButton: {
         justifyContent: 'center',
+        alignItems: 'center'
     },
-    validateButtonActive: {
+    resendButtonActive: {
         backgroundColor: colors.black,
     },
-    validateButtonInactive: {
+    resendButtonInactive: {
         backgroundColor: colors.gray,
     },
     validateButtonText: {

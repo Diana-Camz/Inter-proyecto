@@ -1,14 +1,11 @@
+import CustomText from '@/components/ CustomText';
+import CustomButton from '@/components/CustomButton';
 import { spacing } from '@/themes';
 import { otpScreenStyles } from '@/themes/screens/otp-screen';
+import type { OtpScreenProps } from '@/types/screens/otpScreen';
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, Keyboard, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Keyboard, TouchableOpacity, View } from 'react-native';
 import { CodeField, CodeFieldProps, Cursor } from 'react-native-confirmation-code-field';
-
-type OtpScreenProps = {
-    phoneNumber: string;
-    onVerificationSuccess?: () => void;
-    onResendCode?: () => Promise<void>;
-};
 
 const CELL_COUNT = 6;
 const RESEND_TIMEOUT = 30;
@@ -82,21 +79,31 @@ const OtpScreen: React.FC<OtpScreenProps> = ({
 
     const renderCell: CodeFieldProps['renderCell'] = ({ index, symbol, isFocused }) => (
         <View style={[otpScreenStyles.cell]} key={index}>
-            <Text style={otpScreenStyles.cellText}>
-                {symbol || (isFocused ? <Cursor /> : null)}
-            </Text>
+            <CustomText text={symbol || (isFocused ? <Cursor /> : null)} type='TitleExtraBig' />
         </View>
     );
 
     return (
         <View style={[spacing.safeArea]}>
             <View style={[otpScreenStyles.container]}>
+                <View style={otpScreenStyles.titleContainer} >
+                    <CustomText text='Código de Autenticación' type='TitleBig' />
+                </View>
+                <View style={otpScreenStyles.titleContainer} >
 
-                <Text style={otpScreenStyles.title}>Código de Autenticación</Text>
-                <Text style={otpScreenStyles.subtitle}>
-                    Hemos enviado un código de autenticación OTP al numero {<Text style={otpScreenStyles.resendLink}>{phoneNumber}</Text>}.
-                    Ingresa el código para verificar y continuar.
-                </Text>
+                    <CustomText
+                        text={
+                            <>
+                                Hemos enviado un código de autenticación OTP al número{" "}
+                                <CustomText text={phoneNumber} type='AvenirBodyBold' />
+                                . Ingresa el código para verificar y continuar.
+                            </>
+                        }
+                        type="TextMedium"
+                        numberOfLines={3}
+                    />
+                </View>
+
 
                 <CodeField
                     ref={codeFieldRef}
@@ -109,37 +116,24 @@ const OtpScreen: React.FC<OtpScreenProps> = ({
                     renderCell={renderCell}
                 />
                 <View style={otpScreenStyles.resendField}>
-
-                    <Text style={otpScreenStyles.resendText}>
-                        ¿No recibiste el código?{' '}
-                    </Text>
+                    <CustomText text='¿No recibiste el código? ' type='TextMedium' />
                     <TouchableOpacity
                         onPress={handleResendCode}
                         disabled={resendDisabled}
                         style={otpScreenStyles.resendButton}
                         activeOpacity={0.7}
                     >
-
-                        <Text style={[otpScreenStyles.resendLink, resendDisabled && otpScreenStyles.disabledResend]}>
-                            {resendDisabled ? `Reenviar en ${resendTimer}s` : 'Reenviar código'}
-                        </Text>
+                        <CustomText text={resendDisabled ? `Reenviar en ${resendTimer}s` : 'Reenviar código'}
+                            type='AvenirBodyBold' color={resendDisabled ? 'gray' : 'black'} decoration='underline' />
                     </TouchableOpacity>
                 </View>
-
-
-                <TouchableOpacity
-                    style={[
-                        otpScreenStyles.validateButton,
-                        value.length === CELL_COUNT
-                            ? otpScreenStyles.validateButtonActive
-                            : otpScreenStyles.validateButtonInactive
-                    ]}
-                    onPress={handleValidation}
-                    disabled={value.length !== CELL_COUNT}
-                    activeOpacity={0.8}
-                >
-                    <Text style={otpScreenStyles.validateButtonText}>Validar</Text>
-                </TouchableOpacity>
+                <View style={otpScreenStyles.resendButton}>
+                    <CustomButton
+                        title="validar"
+                        onPress={handleResendCode}
+                        disabled={value.length !== CELL_COUNT}
+                    />
+                </View>
             </View>
         </View>
     );
