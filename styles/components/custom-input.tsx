@@ -1,15 +1,15 @@
-import { colors } from '@themes';
-import { StyleSheet } from 'react-native';
+import { colors } from "@themes";
+import { StyleSheet } from "react-native";
 
 export const customInput = StyleSheet.create({
   wrapper: {
     paddingVertical: 10,
   },
   container: {
-    width: 335,
+    width: "100%",
     height: 60,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
+    flexDirection: "row",
+    justifyContent: "flex-start",
     backgroundColor: colors.sandLight,
     borderRadius: 7,
     borderWidth: 1,
@@ -17,14 +17,18 @@ export const customInput = StyleSheet.create({
     paddingHorizontal: 16,
     gap: 10,
   },
+  containerFocused: {
+    borderWidth: 2,
+    borderColor: colors.darkGray,
+  },
   inputIcon: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 5,
   },
   imageMexico: {
     width: 30,
-    height: 20
-  }
+    height: 20,
+  },
 });
