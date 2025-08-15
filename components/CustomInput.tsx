@@ -1,29 +1,10 @@
 import Entypo from "@expo/vector-icons/Entypo";
 import { colors, fonts } from "@themes";
 import React, { JSX, useEffect, useRef, useState } from "react";
-import {
-  Animated,
-  KeyboardTypeOptions,
-  StyleProp,
-  TextInput,
-  TextInputProps,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Animated, KeyboardTypeOptions, TextInput, View } from "react-native";
 import CountryPicker, { Country } from "react-native-country-picker-modal";
-import { customInput } from "../styles/components/custom-input";
-
-type InputType = "text" | "email" | "phone" | "date";
-
-type CustomInputProps = {
-  type: InputType;
-  label: string;
-  valueInput?: string;
-  onChange?: (value: string) => void;
-  disabled?: boolean;
-  containerStyle?: StyleProp<ViewStyle>;
-  inputProps?: TextInputProps;
-};
+import { customInputStyles as styles } from "../styles/components/custom-input";
+import { CustomInputProps, InputType } from "../types/components/customInput";
 
 export default function CustomInput({
   type,
@@ -87,11 +68,11 @@ export default function CustomInput({
     left: type === "phone" ? 120 : 17,
     top: animatedLabel.interpolate({
       inputRange: [0, 1],
-      outputRange: [18, 10], // sigue dentro del input
+      outputRange: [18, 10], // still inside the input when focused
     }),
     fontSize: animatedLabel.interpolate({
       inputRange: [0, 1],
-      outputRange: [16, 12], // se hace más pequeño
+      outputRange: [16, 12], // smaller when focused
     }),
     color: colors.sand,
   };
@@ -100,15 +81,10 @@ export default function CustomInput({
     setCountry(selectedCountry);
 
   return (
-    <View style={[customInput.wrapper, containerStyle]}>
-      <View
-        style={[
-          customInput.container,
-          isFocused && customInput.containerFocused,
-        ]}
-      >
+    <View style={[styles.wrapper, containerStyle]}>
+      <View style={[styles.container, isFocused && styles.containerFocused]}>
         {type === "phone" && (
-          <View style={customInput.inputIcon}>
+          <View style={styles.inputIcon}>
             <CountryPicker
               countryCode={country.cca2}
               withFlag
@@ -134,9 +110,8 @@ export default function CustomInput({
           {...inputProps}
           style={[
             fonts.TextMedium,
-            { flex: 1 },
-            type === "phone" && { paddingLeft: 10 },
-            { paddingTop: 18 }, // Space for the label inside the input
+            styles.textInput,
+            type === "phone" && styles.textInputPhone,
           ]}
         />
       </View>

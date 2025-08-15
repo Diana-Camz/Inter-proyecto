@@ -1,7 +1,7 @@
 import { colors } from "@themes";
 import { StyleSheet } from "react-native";
 
-export const customInput = StyleSheet.create({
+export const customInputStyles = StyleSheet.create({
   wrapper: {
     paddingVertical: 10,
   },
@@ -27,8 +27,6 @@ export const customInput = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 5,
   },
-  imageMexico: {
-    width: 30,
-    height: 20,
-  },
+  textInput: { flex: 1, paddingTop: 18 }, // Space for the label inside the input
+  textInputPhone: { paddingLeft: 10 }, // Additional padding for phone input
 });
