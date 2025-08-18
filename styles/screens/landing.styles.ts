@@ -12,7 +12,7 @@ export const landingStyles = StyleSheet.create({
     height: 322,
   },
   coffeesImageContainer: {
-    marginHorizontal: -16,
+    marginHorizontal: -20,
     width: "100%",
     height: 322,
     alignSelf: "flex-start",
