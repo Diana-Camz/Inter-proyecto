@@ -28,22 +28,53 @@ export default function CustomInput({
     date: "number-pad",
   };
 
+  const maxLengthMap: Partial<Record<InputType, number>> = {
+    phone: 14, // (123) 4567890
+    date: 10,  // dd/mm/aaaa
+  };
+
   const handleChangeText = (text: string) => {
     let formatted = text;
 
     if (type === "phone") {
+      
       // Delete all non-digit characters
-      const digits = text.replace(/\D/g, "");
+      let digits = text.replace(/\D/g, "");
+
+        // Limitar a 10 dígitos
+      if (digits.length > 10) {
+        digits = digits.slice(0, 10);
+      }
 
       // Format: 3 first digits in parentheses + space
-
-      if (digits.length <= 3) {
+      if(digits.length == 0 ){
+        formatted = "";
+      }else if ( digits.length <= 3  ) {
         formatted = `(${digits}`;
-      } else if (digits.length <= 10) {
-        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+      } else {
+        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 10)}`;
+      } 
+    }
+
+    if(type === "date"){
+      // Delete all non-digit characters
+      let digits = text.replace(/\D/g, "");
+
+      // Máximo 8 dígitos (ddmmAAAA)
+      digits = digits.slice(0, 8);
+      // Correcciones suaves de día y mes (opcional)
+      const day = digits.slice(0, 2);
+      const month = digits.slice(2, 4);
+      if (day.length === 2 && Number(day) > 31) digits = `31${digits.slice(2)}`;
+      if (month.length === 2 && Number(month) > 12) digits = `${digits.slice(0, 2)}12${digits.slice(4)}`;
+
+      if (digits.length <= 2) {
+        formatted = digits;
+      } else if (digits.length <= 4) {
+        formatted = `${digits.slice(0, 2)}/${digits.slice(2)}`;
       } else {
         // Limit to 10 digits
-        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 10)}`;
+        formatted = `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
       }
     }
 
@@ -116,6 +147,7 @@ export default function CustomInput({
           onChangeText={handleChangeText}
           keyboardType={keyboardTypeMap[type]}
           autoCapitalize="none"
+          maxLength={maxLengthMap[type]}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...inputProps}

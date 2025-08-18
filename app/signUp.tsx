@@ -108,7 +108,7 @@ export default function SignUp() {
             />
             <CustomInput 
             type={"date"}
-            label={"Cumpleaños"}
+            label={"Cumpleaños (dd/mm/aaaa)"}
             valueInput={registrationData.birthday}
             onChange={data => handleInputChange(setRegistrationData, 'birthday', data)}
             />
