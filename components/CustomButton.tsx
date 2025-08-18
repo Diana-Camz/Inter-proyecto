@@ -6,7 +6,6 @@ import CustomText from "./CustomText";
 
 type ButtonProps = {
   title: string;
-  disabled: boolean;
   onPress: () => void;
   disabled?: boolean;
 };

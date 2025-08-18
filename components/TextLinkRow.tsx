@@ -9,11 +9,12 @@ export default function TextLinkRow({
   linkText,
   onPress,
   lines,
+  disabled,
 }: TextLinkRowProps) {
   return (
     <View style={[styles.container, lines && styles.lines]}>
       <CustomText type="TextRegular" text={message + " "} />
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={onPress} disabled={disabled}>
         <CustomText type="linkRegular" text={linkText} />
       </TouchableOpacity>
     </View>

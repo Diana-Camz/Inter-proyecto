@@ -1,10 +1,12 @@
 import CustomText from '@/components/ CustomText';
 import CustomButton from '@/components/CustomButton';
+import GoBackButton from '@/components/GoBackButton';
+import TextLinkRow from '@/components/TextLinkRow';
 import { spacing } from '@/themes';
 import { otpScreenStyles } from '@/themes/screens/otp-screen';
 import type { OtpScreenProps } from '@/types/screens/otpScreen';
 import React, { useEffect, useRef, useState } from 'react';
-import { Alert, Keyboard, TouchableOpacity, View } from 'react-native';
+import { Alert, Keyboard, View } from 'react-native';
 import { CodeField, CodeFieldProps, Cursor } from 'react-native-confirmation-code-field';
 
 const CELL_COUNT = 6;
@@ -55,7 +57,7 @@ const OtpScreen: React.FC<OtpScreenProps> = ({
                 // logic for real validation
                 // await verifyOtp(value);
 
-                Alert.alert('Éxito', 'Código verificado correctamente');
+                Alert.alert('Código verificado correctamente');
                 onVerificationSuccess?.();
             } catch (error) {
                 Alert.alert('Error', 'Código incorrecto. Intenta nuevamente.');
@@ -86,6 +88,7 @@ const OtpScreen: React.FC<OtpScreenProps> = ({
     return (
         <View style={[spacing.safeArea]}>
             <View style={[otpScreenStyles.container]}>
+                <GoBackButton />
                 <View style={otpScreenStyles.titleContainer} >
                     <CustomText text='Código de Autenticación' type='TitleBig' />
                 </View>
@@ -115,22 +118,15 @@ const OtpScreen: React.FC<OtpScreenProps> = ({
                     textContentType="oneTimeCode"
                     renderCell={renderCell}
                 />
-                <View style={otpScreenStyles.resendField}>
-                    <CustomText text='¿No recibiste el código? ' type='TextMedium' />
-                    <TouchableOpacity
-                        onPress={handleResendCode}
-                        disabled={resendDisabled}
-                        style={otpScreenStyles.resendButton}
-                        activeOpacity={0.7}
-                    >
-                        <CustomText text={resendDisabled ? `Reenviar en ${resendTimer}s` : 'Reenviar código'}
-                            type='AvenirBodyBold' color={resendDisabled ? 'gray' : 'black'} decoration='underline' />
-                    </TouchableOpacity>
-                </View>
+                <TextLinkRow
+                    message='¿No recibiste el código? ' linkText={resendDisabled ? `Reenviar en ${resendTimer}s` : 'Reenviar código'}
+                    onPress={handleResendCode}
+                    disabled={resendDisabled}
+                />
                 <View style={otpScreenStyles.resendButton}>
                     <CustomButton
                         title="validar"
-                        onPress={handleResendCode}
+                        onPress={handleValidation}
                         disabled={value.length !== CELL_COUNT}
                     />
                 </View>
