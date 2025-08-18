@@ -1,14 +1,11 @@
+import { TouchableOpacity } from "react-native";
+import React from "react";
+import CustomText from "./CustomText";
+import { ButtonProps } from "types/components/customButton"
 import { customButton } from "@/styles/components/custom-button";
 import { colors } from "@/themes";
-import React from "react";
-import { TouchableOpacity } from "react-native";
-import CustomText from "./CustomText";
 
-type ButtonProps = {
-  title: string;
-  disabled: boolean;
-  onPress: () => void;
-};
+
 
 export default function CustomButton({
   title,

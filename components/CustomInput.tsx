@@ -1,29 +1,16 @@
-import Entypo from "@expo/vector-icons/Entypo";
-import { colors, fonts } from "@themes";
 import React, { JSX, useEffect, useRef, useState } from "react";
 import {
   Animated,
   KeyboardTypeOptions,
-  StyleProp,
+  Platform,
   TextInput,
-  TextInputProps,
   View,
-  ViewStyle,
 } from "react-native";
 import CountryPicker, { Country } from "react-native-country-picker-modal";
+import { CustomInputProps as Props, InputType } from "@/types/components/customInput";
+import Entypo from "@expo/vector-icons/Entypo";
 import { customInput } from "../styles/components/custom-input";
-
-type InputType = "text" | "email" | "phone" | "date";
-
-type CustomInputProps = {
-  type: InputType;
-  label: string;
-  valueInput?: string;
-  onChange?: (value: string) => void;
-  disabled?: boolean;
-  containerStyle?: StyleProp<ViewStyle>;
-  inputProps?: TextInputProps;
-};
+import { colors, fonts } from "@themes";
 
 export default function CustomInput({
   type,
@@ -33,7 +20,7 @@ export default function CustomInput({
   disabled = false,
   containerStyle,
   inputProps,
-}: CustomInputProps): JSX.Element {
+}: Props): JSX.Element {
   const keyboardTypeMap: Record<InputType, KeyboardTypeOptions> = {
     text: "default",
     email: "email-address",
@@ -136,7 +123,7 @@ export default function CustomInput({
             fonts.TextMedium,
             { flex: 1 },
             type === "phone" && { paddingLeft: 10 },
-            { paddingTop: 18 }, // Space for the label inside the input
+            { paddingTop: Platform.OS === "android" ? 27 : 18 }, // Space for the label inside the input
           ]}
         />
       </View>

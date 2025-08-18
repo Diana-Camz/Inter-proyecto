@@ -1,29 +1,8 @@
-import { colors, fonts } from "@themes";
+import { Text } from "react-native";
 import React from "react";
-import { StyleProp, Text, TextProps, TextStyle } from "react-native";
+import { CustomTextProps as Props } from "types/components/customText";
+import { colors, fonts } from "@themes";
 
-type TextTypes =
-  | "TitleExtraBig"
-  | "TitleBig"
-  | "TextButtons"
-  | "TextRegular"
-  | "TextMedium"
-  | "TextSmall"
-  | "label"
-  | "LabelSmall"
-  | "link"
-  | "linkSmall";
-
-type CustomTextProps = {
-  text?: string;
-  type: TextTypes;
-  numberOfLines?: number;
-  style?: StyleProp<TextStyle>;
-  onPress?: () => void;
-  color?: string;
-  lineHeight?: number;
-  children?: React.ReactNode;
-} & Omit<TextProps, "style" | "onPress" | "children">;
 
 export default function CustomText({
   text,
@@ -34,7 +13,7 @@ export default function CustomText({
   lineHeight,
   onPress,
   children,
-}: CustomTextProps): React.JSX.Element {
+}: Props): React.JSX.Element {
   const textStyleKey = type;
   const baseStyle = fonts[textStyleKey];
   return (
