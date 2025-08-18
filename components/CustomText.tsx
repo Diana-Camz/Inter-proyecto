@@ -12,10 +12,16 @@ type TextTypes =
   | "label"
   | "LabelSmall"
   | "linkRegular"
-  | "linkSmall";
+  | "linkSmall"
+  | "HelveticaRegular"
+  | "HelveticaMedium"
+  | "HelveticaBold12"
+  | "HelveticaBold16"
+  | "HelveticaBold20"
+  | "HelveticaBold24";
 
 type CustomTextProps = {
-  text?: string;
+  text: string;
   type: TextTypes;
   numberOfLines?: number;
   style?: StyleProp<TextStyle>;
