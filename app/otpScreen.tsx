@@ -125,7 +125,7 @@ const OtpScreen: React.FC<OtpScreenProps> = ({
                 />
                 <View style={otpScreenStyles.resendButton}>
                     <CustomButton
-                        title="validar"
+                        title="Validar"
                         onPress={handleValidation}
                         disabled={value.length !== CELL_COUNT}
                     />
