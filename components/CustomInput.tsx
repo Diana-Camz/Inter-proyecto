@@ -28,28 +28,35 @@ export default function CustomInput({
     date: "number-pad",
   };
 
+  const [displayValue, setDisplayValue] = useState(valueInput ?? "");
+
   const handleChangeText = (text: string) => {
-    let formatted = text;
+    const digits = text.replace(/\D/g, "").slice(0, 10); // max 10 dígitos
+    let formatted = "";
+    let raw = "";
 
-    if (type === "phone") {
-      const digits = text.replace(/\D/g, "").slice(0, 10); // max 10 digits
-
-      if (digits.length === 0) {
-        formatted = "";
-      } else if (digits.length <= 3) {
-        formatted = `(${digits}`;
-      } else if (digits.length <= 6) {
-        formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
-      } else {
-        formatted = `(${digits.slice(0, 3)}) ${digits.slice(
-          3,
-          6
-        )} ${digits.slice(6)}`;
-      }
+    if (digits.length === 0) {
+      formatted = "";
+    } else if (digits.length <= 3) {
+      formatted = `(${digits}`;
+    } else if (digits.length <= 6) {
+      formatted = `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    } else {
+      formatted = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)} ${digits.slice(
+        6
+      )}`;
     }
+
+    // Guardamos el valor REAL con lada
+    raw = `+${country.callingCode[0]}${digits}`;
+
+    // Mandamos el raw al padre
     if (onChange) {
-      onChange(formatted);
+      onChange(raw);
     }
+
+    // Para mostrar el formateado en el input necesitamos manejar un estado local
+    setDisplayValue(formatted);
   };
 
   const [country, setCountry] = useState<Country>({
@@ -100,6 +107,12 @@ export default function CustomInput({
               withFilter
               onSelect={(selected) => {
                 setCountry(selected);
+                onChange(
+                  `+${selected.callingCode[0]}${displayValue.replace(
+                    /\D/g,
+                    ""
+                  )}`
+                );
                 setCountryPickerVisible(false);
               }}
               visible={countryPickerVisible}
@@ -113,7 +126,7 @@ export default function CustomInput({
 
         <TextInput
           editable={!disabled}
-          value={valueInput}
+          value={displayValue}
           onChangeText={handleChangeText}
           keyboardType={keyboardTypeMap[type]}
           autoCapitalize="none"
