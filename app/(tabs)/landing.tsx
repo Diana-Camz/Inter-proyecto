@@ -1,7 +1,8 @@
 import CustomText from "@/components/ CustomText";
 import CustomButton from "@/components/CustomButton";
-import { logInSyles as styles } from "@/styles/screens/log-in.styles";
+import { landingStyles as styles } from "@/styles/screens/landing.styles";
 import { spacing } from "@/themes";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Image, TouchableOpacity, View } from "react-native";
 
@@ -14,7 +15,8 @@ const Images = [
   },
 ];
 
-export default function landing() {
+export default function Landing() {
+  const router = useRouter();
   return (
     <View style={[spacing.safeArea, spacing.safeStatusBar, styles.container]}>
       <Image source={Images[0].source} style={styles.logoImage} />
@@ -31,10 +33,14 @@ export default function landing() {
           resizeMode="cover"
         />
       </View>
-      <CustomButton title="Crear cuenta" onPress={() => {}} />
+      <CustomButton
+        title="Crear cuenta"
+        onPress={() => router.push("/signUp")}
+        disabled={false}
+      />
       <View style={styles.loginContainer}>
         <CustomText type="AvenirBodyRegular" text="¿Ya tienes una cuenta?" />
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity onPress={() => router.push("/logIn")}>
           <CustomText
             type="AvenirBodyBold"
             text=" Inicia sesión"

@@ -1,5 +1,5 @@
-import { StyleSheet, Platform, ViewStyle } from 'react-native';
-import { colors } from './colors';
+import { Platform, StyleSheet, ViewStyle } from "react-native";
+import { colors } from "./colors";
 
 interface SpacingStyles {
   safeArea: ViewStyle;
@@ -9,17 +9,17 @@ interface SpacingStyles {
 
 export const spacing = StyleSheet.create<SpacingStyles>({
   safeArea: {
-    display: 'flex',
+    display: "flex",
     paddingTop: 0,
-    paddingHorizontal: 16,
+    paddingHorizontal: 20,
     backgroundColor: colors.white,
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   safeStatusBar: {
-    paddingTop: Platform.OS === 'android' ? 30 : 60,
+    paddingTop: Platform.OS === "android" ? 30 : 60,
   },
   safeBottom: {
-    paddingBottom: Platform.OS === 'android' ? 20 : 40,
+    paddingBottom: Platform.OS === "android" ? 20 : 40,
   },
 });

@@ -8,13 +8,15 @@ export interface CreateBusinessScreenStyles {
   containerConditions: ViewStyle;
   containerCheckBox: ViewStyle;
   containerConditionsText: ViewStyle;
+  containerButton: ViewStyle;
   containerLogin: ViewStyle;
 }
 
-export const logInStyles = StyleSheet.create<CreateBusinessScreenStyles>({
+export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
   container: {
     flex: 1,
     justifyContent: "space-around",
+    paddingBottom: 40,
   },
   goBackButton: {
     width: 40,
@@ -41,6 +43,9 @@ export const logInStyles = StyleSheet.create<CreateBusinessScreenStyles>({
     width: 335,
     flexDirection: "row",
     flexWrap: "wrap",
+  },
+  containerButton: {
+    alignItems: "center",
   },
   containerLogin: {
     flexDirection: "row",
