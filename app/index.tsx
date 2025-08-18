@@ -20,8 +20,11 @@ export default function App() {
     PlusJakartaSans_800ExtraBold,
 
     // Custom Fonts
-    "AvenirNextCondensed-Regular": require("../assets/fonts/avenir-next-condensed-regular.otf"),
-    "AvenirNextCondensed-Bold": require("../assets/fonts/avenir-next-condensed-bold.ttf"),
+    "AvenirNextCondensed-Regular": require("../assets/fonts/AvenirNextCondensed/avenir-next-condensed-regular.otf"),
+    "AvenirNextCondensed-Bold": require("../assets/fonts/AvenirNextCondensed/avenir-next-condensed-bold.ttf"),
+    "HelveticaNeue-Regular": require("../assets/fonts/HelveticaNeue/HelveticaNeueRegular.ttf"),
+    "HelveticaNeue-Medium": require("../assets/fonts/HelveticaNeue/HelveticaNeueMedium.otf"),
+    "HelveticaNeue-Bold": require("../assets/fonts/HelveticaNeue/HelveticaNeueBold.otf"),
   });
 
   const [showSplash, setShowSplash] = useState<boolean>(true);
