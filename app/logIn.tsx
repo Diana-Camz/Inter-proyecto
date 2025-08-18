@@ -12,30 +12,36 @@ import { View } from "react-native";
 export default function LogIn() {
   const [phoneNumber, setPhoneNumber] = React.useState("");
   return (
-    <View style={[spacing.safeArea, spacing.safeStatusBar, styles.container]}>
-      <View>
-        <GoBackButton />
-        <CustomText type="TitleBig" text={"Iniciar sesión"} numberOfLines={2} />
-      </View>
-      <View style={styles.containerInputs}>
-        <CustomInput
-          type={"phone"}
-          label={"Número de celular"}
-          valueInput={phoneNumber}
-          onChange={setPhoneNumber}
+    <View style={[spacing.safeArea, spacing.safeStatusBar]}>
+      <View style={styles.container}>
+        <View>
+          <GoBackButton />
+          <CustomText
+            type="TitleBig"
+            text={"Iniciar sesión"}
+            numberOfLines={2}
+          />
+        </View>
+        <View style={styles.containerInputs}>
+          <CustomInput
+            type={"phone"}
+            label={"Número de celular"}
+            valueInput={phoneNumber}
+            onChange={setPhoneNumber}
+          />
+        </View>
+        <CustomButton
+          title="Iniciar sesión"
+          onPress={() => {}}
+          disabled={false}
+        />
+        <TextLinkRow
+          lines={true}
+          message="¿No tienes una cuenta?"
+          linkText="Crear cuenta"
+          onPress={() => router.push("/signUp")}
         />
       </View>
-      <CustomButton
-        title="Iniciar sesión"
-        onPress={() => {}}
-        disabled={false}
-      />
-      <TextLinkRow
-        lines={true}
-        message="¿No tienes una cuenta?"
-        linkText="Crear cuenta"
-        onPress={() => router.push("/signUp")}
-      />
     </View>
   );
 }
