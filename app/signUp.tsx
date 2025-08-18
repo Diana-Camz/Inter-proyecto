@@ -1,26 +1,19 @@
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import CustomText from "@/components/CustomText";
+import GoBackButton from "@/components/GoBackButton";
+import TextLinkRow from "@/components/TextLinkRow";
 import { signUp } from "@/styles/screens/sign-up";
 import { colors, spacing } from "@/themes";
-import Entypo from "@expo/vector-icons/Entypo";
 import Feather from "@expo/vector-icons/Feather";
 import { router } from "expo-router";
 import React from "react";
-import { TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 
 export default function logIn() {
   return (
     <View style={[spacing.safeArea, spacing.safeStatusBar, signUp.container]}>
-      <View>
-        <TouchableOpacity
-          onPress={() => router.back()}
-          style={signUp.goBackButton}
-        >
-          <Entypo name="chevron-small-left" size={50} color={colors.black} />
-        </TouchableOpacity>
-        <CustomText type="TitleBig" text={"Crear cuenta"} numberOfLines={2} />
-      </View>
+      <GoBackButton />
       <View style={signUp.containerInputs}>
         <CustomInput type={"text"} label={"Nombre"} />
         <CustomInput type={"text"} label={"Email"} />
@@ -50,12 +43,12 @@ export default function logIn() {
           disabled={false}
         />
       </View>
-      <View style={signUp.containerLogin}>
-        <CustomText type={"TextRegular"} text={"¿Ya tienes una cuenta?"} />
-        <TouchableOpacity onPress={() => router.push("/logIn")}>
-          <CustomText type={"linkRegular"} text={"Inicia sesión"} />
-        </TouchableOpacity>
-      </View>
+      <TextLinkRow
+        lines={true}
+        message="¿Ya tienes una cuenta?"
+        linkText="Inicia sesión"
+        onPress={() => router.push("/logIn")}
+      />
     </View>
   );
 }

@@ -1,15 +1,12 @@
-import { colors } from "@/themes";
 import { StyleSheet, ViewStyle } from "react-native";
 
 export interface CreateBusinessScreenStyles {
   container: ViewStyle;
-  goBackButton: ViewStyle;
   containerInputs: ViewStyle;
   containerConditions: ViewStyle;
   containerCheckBox: ViewStyle;
   containerConditionsText: ViewStyle;
   containerButton: ViewStyle;
-  containerLogin: ViewStyle;
 }
 
 export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
@@ -17,13 +14,6 @@ export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
     flex: 1,
     justifyContent: "space-around",
     paddingBottom: 40,
-  },
-  goBackButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 50,
-    marginBottom: 25,
-    backgroundColor: colors.sandLight,
   },
   containerInputs: {
     width: "auto",
@@ -46,15 +36,5 @@ export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
   },
   containerButton: {
     alignItems: "center",
-  },
-  containerLogin: {
-    flexDirection: "row",
-    justifyContent: "center",
-    paddingVertical: 16,
-    gap: 5,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderBottomColor: colors.gray,
-    borderTopColor: colors.gray,
   },
 });

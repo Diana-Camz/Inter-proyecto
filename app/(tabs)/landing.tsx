@@ -1,10 +1,11 @@
 import CustomText from "@/components/ CustomText";
 import CustomButton from "@/components/CustomButton";
+import TextLinkRow from "@/components/TextLinkRow";
 import { landingStyles as styles } from "@/styles/screens/landing.styles";
 import { spacing } from "@/themes";
 import { useRouter } from "expo-router";
 import React from "react";
-import { Image, TouchableOpacity, View } from "react-native";
+import { Image, View } from "react-native";
 
 const Images = [
   {
@@ -38,16 +39,11 @@ export default function Landing() {
         onPress={() => router.push("/signUp")}
         disabled={false}
       />
-      <View style={styles.loginContainer}>
-        <CustomText type="AvenirBodyRegular" text="¿Ya tienes una cuenta?" />
-        <TouchableOpacity onPress={() => router.push("/logIn")}>
-          <CustomText
-            type="AvenirBodyBold"
-            text=" Inicia sesión"
-            decoration="underline"
-          />
-        </TouchableOpacity>
-      </View>
+      <TextLinkRow
+        message="¿Ya tienes una cuenta?"
+        linkText="Inicia sesión"
+        onPress={() => router.push("/logIn")}
+      />
     </View>
   );
 }
