@@ -59,6 +59,33 @@ export const fonts: Record<string, TextStyle> = {
     fontSize: 16,
     fontWeight: 500,
   },
+  HelveticaRegular: {
+    fontFamily: "HelveticaNeue-Regular",
+    fontSize: 12,
+    fontWeight: "400",
+    lineHeight: 15,
+  },
+  HelveticaMedium: {
+    fontFamily: "HelveticaNeue-Medium",
+    fontSize: 12,
+    fontWeight: "500",
+  },
+  HelveticaBold12: {
+    fontFamily: "HelveticaNeue-Bold",
+    fontSize: 12,
+    fontWeight: "bold",
+    lineHeight: 15,
+  },
+  HelveticaBold20: {
+    fontFamily: "HelveticaNeue-Bold",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  HelveticaBold24: {
+    fontFamily: "HelveticaNeue-Bold",
+    fontSize: 24,
+    fontWeight: "bold",
+  },
   linkRegular: {
     fontFamily: `Plus Jakarta Sans`,
     fontWeight: "bold",
