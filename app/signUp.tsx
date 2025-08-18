@@ -1,13 +1,14 @@
 import CustomButton from "@/components/CustomButton";
 import CustomInput from "@/components/CustomInput";
 import CustomText from "@/components/CustomText";
+import GoBackButton from "@/components/GoBackButton";
 import Loader from "@/components/Loader";
 import { handleInputChange } from "@/hooks/handleInputChange";
 import useFormValidation from "@/hooks/useFormValidation";
+import {UserData as data} from "types/screens/SignUp";
 import { signUp } from "@/styles/screens/sign-up";
 import { colors, spacing } from "@/themes";
-import { Entypo, MaterialIcons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { MaterialIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   Alert,
@@ -21,13 +22,6 @@ import {
   View
 } from "react-native";
 
-
-type data = {
-  name: string;
-  email: string;
-  phone: string;
-  birthday: string;
-};
 
 export default function SignUp() {
   const [acept, setAcept] = useState<boolean>(false);
@@ -86,12 +80,7 @@ export default function SignUp() {
         >
           <View style={signUp.container}>
         <View >
-         <TouchableOpacity 
-            onPress={() => router.back()}
-            style={signUp.goBackButton}
-          >
-            <Entypo name="chevron-small-left" size={50} color={colors.black} />
-         </TouchableOpacity>
+         <GoBackButton />
          <CustomText
             type="TitleBig"
             text={"Crear cuenta"}
@@ -100,30 +89,26 @@ export default function SignUp() {
        </View>
         <View style={signUp.containerInputs}>
             <CustomInput 
-            type={'text'}
-            label={'Nombre'}
-            placeholder={'Nombre Completo'}
+            type={"text"}
+            label={"Nombre"}
             valueInput={registrationData.name}
             onChange={data => handleInputChange(setRegistrationData, 'name', data)}
             />
             <CustomInput 
-            type={'email'}
-            label={'Email'}
-            placeholder={'Email'}
+            type={"email"}
+            label={"Email"}
             valueInput={registrationData.email}
             onChange={data => handleInputChange(setRegistrationData, 'email', data)}
             />
             <CustomInput 
-            type={'phone'}
-            label={'Número de celular'}
-            placeholder={'Número de celular'}
+            type={"phone"}
+            label={"Número de celular"}
             valueInput={registrationData.phone}
             onChange={data => handleInputChange(setRegistrationData, 'phone', data)}
             />
             <CustomInput 
-            type={'date'}
-            label={'Cumpleaños'}
-            placeholder={'Cumpleaños'}
+            type={"date"}
+            label={"Cumpleaños"}
             valueInput={registrationData.birthday}
             onChange={data => handleInputChange(setRegistrationData, 'birthday', data)}
             />
@@ -135,10 +120,10 @@ export default function SignUp() {
                 <MaterialIcons name={acept ? 'check-box': 'check-box-outline-blank'} size={30} color={acept ? colors.black : colors.gray}/>
             </Pressable>
            <View style={signUp.containerConditionsText}>
-             <CustomText type="TextSmall">
+             <CustomText type="TextRegular">
                 Al crear una cuenta, aceptas nuestros{" "}
                 <CustomText
-                type="linkSmall"
+                type="linkRegular"
                 onPress={() => console.log("Términos clic")}
                 >
                 Términos y Condiciones
@@ -152,7 +137,7 @@ export default function SignUp() {
         <View style={signUp.containerLogin}>
             <CustomText type={'TextRegular'} text={'¿Ya tienes una cuenta?'} />
             <TouchableOpacity onPress={() => {}}>
-                <CustomText type={'link'} text={'Inicia sesión'}/>
+                <CustomText type={'linkRegular'} text={'Inicia sesión'}/>
             </TouchableOpacity>
         </View>
         </View>

@@ -39,9 +39,10 @@ export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
     marginRight: 8,
   },
   containerConditionsText: {
-    width: '100%',
-   flexDirection: 'row',
+    width: '89%',
+    flexDirection: 'row',
     flexWrap: 'wrap',
+    
   },
   containerButton: {
     width: '100%',
