@@ -23,6 +23,7 @@ type CustomTextProps = {
   color?: string;
   lineHeight?: number;
   children?: React.ReactNode;
+  align?: "left" | "center" | "right";
 } & Omit<TextProps, "style" | "onPress" | "children">;
 
 export default function CustomText({
@@ -34,12 +35,13 @@ export default function CustomText({
   lineHeight,
   onPress,
   children,
+  align,
 }: CustomTextProps): React.JSX.Element {
   const textStyleKey = type;
   const baseStyle = fonts[textStyleKey];
   return (
     <Text
-      style={[baseStyle, { color, lineHeight }, style]}
+      style={[baseStyle, { color, lineHeight }, style, { textAlign: align }]}
       numberOfLines={numberOfLines}
       ellipsizeMode={numberOfLines ? "tail" : undefined}
       onPress={onPress}

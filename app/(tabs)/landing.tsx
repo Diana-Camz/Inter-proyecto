@@ -1,5 +1,5 @@
-import CustomText from "@/components/ CustomText";
 import CustomButton from "@/components/CustomButton";
+import CustomText from "@/components/CustomText";
 import TextLinkRow from "@/components/TextLinkRow";
 import { landingStyles as styles } from "@/styles/screens/landing.styles";
 import { spacing } from "@/themes";
