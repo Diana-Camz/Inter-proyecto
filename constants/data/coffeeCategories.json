@@ -1,0 +1,76 @@
+{
+  "coffeeCategories": [
+    {
+      "id": "1",
+      "name": "Espresso Bar",
+      "isSelected": true,
+      "icon": "americano"
+    },
+    {
+      "id": "2",
+      "name": "Bebidas Espresso Frias",
+      "isSelected": false,
+      "icon": "americano"
+    },
+    {
+      "id": "3",
+      "name": "Brew Bar",
+      "isSelected": false,
+      "icon": "americano"
+    },
+    {
+      "id": "4",
+      "name": "Cold Brew",
+      "isSelected": false,
+      "icon": "coldBrew"
+    },
+    {
+      "id": "5",
+      "name": "Alternativas al Café",
+      "isSelected": false,
+      "icon": "matchaCaliente"
+    },
+    {
+      "id": "6",
+      "name": "Refreshments",
+      "isSelected": false,
+      "icon": "dragonLata"
+    },
+    {
+      "id": "7",
+      "name": "Frappes",
+      "isSelected": false,
+      "icon": "frappeMocha"
+    },
+    {
+      "id": "8",
+      "name": "Bebidas de Autor",
+      "isSelected": false,
+      "icon": "strawberryMatcha"
+    },
+    {
+      "id": "9",
+      "name": "Otras Bebidas",
+      "isSelected": false,
+      "icon": "americano"
+    },
+    {
+      "id": "10",
+      "name": "Cocktails",
+      "isSelected": false,
+      "icon": "carajillo"
+    },
+    {
+      "id": "11",
+      "name": "Lo Dulce",
+      "isSelected": false,
+      "icon": "americano"
+    },
+    {
+      "id": "12",
+      "name": "Nuestra Merch",
+      "isSelected": false,
+      "icon": "americano"
+    }
+  ]
+}
