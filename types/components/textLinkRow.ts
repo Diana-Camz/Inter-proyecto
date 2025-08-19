@@ -3,4 +3,5 @@ export type TextLinkRowProps = {
   linkText: string;
   onPress: () => void;
   lines?: boolean;
+  disabled?: boolean;
 };
