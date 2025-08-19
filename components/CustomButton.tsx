@@ -2,19 +2,15 @@ import { customButton } from "@/styles/components/custom-button";
 import { colors } from "@/themes";
 import React from "react";
 import { TouchableOpacity } from "react-native";
+import { ButtonProps } from "types/components/customButton";
 import CustomText from "./CustomText";
-
-type ButtonProps = {
-  title: string;
-  disabled: boolean;
-  onPress: () => void;
-};
 
 export default function CustomButton({
   title,
   onPress,
   disabled = false,
 }: ButtonProps) {
+  console.log(disabled);
   return (
     <TouchableOpacity
       style={[

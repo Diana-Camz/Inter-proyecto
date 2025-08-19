@@ -6,8 +6,8 @@ export const customInputStyles = StyleSheet.create({
     paddingVertical: 10,
   },
   container: {
-    width: "100%",
-    height: 60,
+    alignSelf: "stretch",
+    minHeight: 56,
     flexDirection: "row",
     justifyContent: "flex-start",
     backgroundColor: colors.sandLight,
@@ -27,6 +27,8 @@ export const customInputStyles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: 5,
   },
-  textInput: { flex: 1, paddingTop: 18 }, // Space for the label inside the input
+  textInput: { flex: 1 },
+  textInputAndroid: { paddingTop: 27 },
+  textInputiOS: { paddingTop: 18 }, // Space for the label inside the input
   textInputPhone: { paddingLeft: 10 }, // Additional padding for phone input
 });

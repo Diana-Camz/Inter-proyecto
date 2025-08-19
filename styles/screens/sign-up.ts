@@ -12,8 +12,8 @@ export interface CreateBusinessScreenStyles {
 export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
   container: {
     flex: 1,
-    justifyContent: "space-around",
-    paddingBottom: 40,
+    justifyContent: "flex-start",
+    gap: 25,
   },
   containerInputs: {
     width: "auto",
@@ -21,8 +21,7 @@ export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
     gap: 12,
   },
   containerConditions: {
-    width: 380,
-    paddingLeft: 20,
+    width: "auto",
     flexDirection: "row",
     alignItems: "center",
   },
@@ -30,11 +29,12 @@ export const signUp = StyleSheet.create<CreateBusinessScreenStyles>({
     marginRight: 8,
   },
   containerConditionsText: {
-    width: 335,
+    width: "89%",
     flexDirection: "row",
     flexWrap: "wrap",
   },
   containerButton: {
-    alignItems: "center",
+    width: "100%",
+    marginTop: 15,
   },
 });
