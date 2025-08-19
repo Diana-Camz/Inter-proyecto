@@ -13,7 +13,7 @@ export interface CreateBusinessScreenStyles {
 
 export const logInStyles = StyleSheet.create<CreateBusinessScreenStyles>({
   container: {
-    flex: 1,
+    flex: 0.4,
     justifyContent: "space-around",
   },
   goBackButton: {

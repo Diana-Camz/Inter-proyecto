@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { loader } from '../styles/components/loader';
 import { colors } from '@themes';
 
 const Loader: React.FC = () => (
-  <View style={loader.overlay}>
+  <View style={[StyleSheet.absoluteFillObject, loader.overlay]} pointerEvents="none">
     <ActivityIndicator size="large" color={colors.white} />
   </View>
 );

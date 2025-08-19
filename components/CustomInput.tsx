@@ -1,16 +1,20 @@
+import { customInputStyles as styles } from "@/styles/components/custom-input";
+import {
+  InputType,
+  CustomInputProps as Props,
+} from "@/types/components/customInput";
 import Entypo from "@expo/vector-icons/Entypo";
 import { colors, fonts } from "@themes";
 import React, { JSX, useEffect, useRef, useState } from "react";
 import {
   Animated,
   KeyboardTypeOptions,
+  Platform,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import CountryPicker, { Country } from "react-native-country-picker-modal";
-import { customInputStyles as styles } from "../styles/components/custom-input";
-import { CustomInputProps, InputType } from "../types/components/customInput";
 
 export default function CustomInput({
   type,
@@ -20,7 +24,7 @@ export default function CustomInput({
   disabled = false,
   containerStyle,
   inputProps,
-}: CustomInputProps): JSX.Element {
+}: Props): JSX.Element {
   const keyboardTypeMap: Record<InputType, KeyboardTypeOptions> = {
     text: "default",
     email: "email-address",
@@ -28,12 +32,25 @@ export default function CustomInput({
     date: "number-pad",
   };
 
+  const maxLengthMap: Partial<Record<InputType, number>> = {
+    phone: 14, // (123) 4567890
+    date: 10, // dd/mm/aaaa
+  };
+
+  const [displayValue, setDisplayValue] = useState(valueInput ?? "");
+
   const handleChangeText = (text: string) => {
     let formatted = text;
+    let digits = text.replace(/\D/g, ""); // Remove all non-digit characters
+    let raw = "";
 
     if (type === "phone") {
-      const digits = text.replace(/\D/g, "").slice(0, 10); // max 10 digits
+      // Limitar a 10 dígitos
+      if (digits.length > 10) {
+        digits = digits.slice(0, 10);
+      }
 
+      // Format: 3 first digits in parentheses + space
       if (digits.length === 0) {
         formatted = "";
       } else if (digits.length <= 3) {
@@ -46,10 +63,48 @@ export default function CustomInput({
           6
         )} ${digits.slice(6)}`;
       }
+      // Guardamos el valor REAL con lada
+      raw = digits.length > 0 ? `+${country.callingCode[0]}${digits}` : "";
+    } else if (type === "date") {
+      digits = digits.slice(0, 8); // ddmmyyyy
+      const day = digits.slice(0, 2);
+      const month = digits.slice(2, 4);
+      const year = digits.slice(4, 8);
+
+      // Correcciones suaves
+      let correctedDay = day;
+      let correctedMonth = month;
+      if (day.length === 2 && Number(day) > 31) correctedDay = "31";
+      if (month.length === 2 && Number(month) > 12) correctedMonth = "12";
+
+      // Formateo para mostrar en el input
+      if (digits.length <= 2) {
+        formatted = correctedDay;
+      } else if (digits.length <= 4) {
+        formatted = `${correctedDay}/${correctedMonth}`;
+      } else {
+        formatted = `${correctedDay}/${correctedMonth}/${year}`;
+      }
+
+      // Construir valor RAW como Date ISO
+      if (day && month && year && year.length === 4) {
+        const isoDate = new Date(`${year}-${correctedMonth}-${correctedDay}`);
+        raw = !isNaN(isoDate.getTime()) ? isoDate.toISOString() : "";
+      } else {
+        raw = "";
+      }
+    } else {
+      // Para otros tipos de input, simplemente usamos el texto ingresado
+      raw = text;
     }
+
+    // Mandamos el raw al padre
     if (onChange) {
-      onChange(formatted);
+      onChange(raw);
     }
+
+    // Para mostrar el formateado en el input necesitamos manejar un estado local
+    setDisplayValue(formatted);
   };
 
   const [country, setCountry] = useState<Country>({
@@ -100,6 +155,12 @@ export default function CustomInput({
               withFilter
               onSelect={(selected) => {
                 setCountry(selected);
+                onChange(
+                  `+${selected.callingCode[0]}${displayValue.replace(
+                    /\D/g,
+                    ""
+                  )}`
+                );
                 setCountryPickerVisible(false);
               }}
               visible={countryPickerVisible}
@@ -113,10 +174,11 @@ export default function CustomInput({
 
         <TextInput
           editable={!disabled}
-          value={valueInput}
+          value={displayValue}
           onChangeText={handleChangeText}
           keyboardType={keyboardTypeMap[type]}
           autoCapitalize="none"
+          maxLength={maxLengthMap[type]}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...inputProps}
@@ -124,6 +186,9 @@ export default function CustomInput({
             fonts.TextMedium,
             styles.textInput,
             type === "phone" && styles.textInputPhone,
+            Platform.OS === "android"
+              ? styles.textInputAndroid
+              : styles.textInputiOS,
           ]}
         />
       </View>
