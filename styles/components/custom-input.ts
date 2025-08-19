@@ -1,15 +1,15 @@
 import { colors } from "@themes";
 import { StyleSheet } from "react-native";
 
-export const customInput = StyleSheet.create({
+export const customInputStyles = StyleSheet.create({
   wrapper: {
     paddingVertical: 10,
   },
   container: {
-    alignSelf: 'stretch',
-    minHeight: 56, 
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
+    alignSelf: "stretch",
+    minHeight: 56,
+    flexDirection: "row",
+    justifyContent: "flex-start",
     backgroundColor: colors.sandLight,
     borderRadius: 7,
     borderWidth: 1,
@@ -21,14 +21,14 @@ export const customInput = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.darkGray,
   },
-  inputIcon: {
+  countryPickerButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 5,
   },
-  imageMexico: {
-    width: 30,
-    height: 20,
-  },
+  textInput: { flex: 1 },
+  textInputAndroid: { paddingTop: 27 },
+  textInputiOS: { paddingTop: 18 }, // Space for the label inside the input
+  textInputPhone: { paddingLeft: 10 }, // Additional padding for phone input
 });

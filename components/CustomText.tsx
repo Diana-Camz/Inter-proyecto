@@ -1,8 +1,7 @@
-import { Text } from "react-native";
-import React from "react";
-import { CustomTextProps as Props } from "types/components/customText";
 import { colors, fonts } from "@themes";
-
+import React from "react";
+import { Text } from "react-native";
+import { CustomTextProps as Props } from "types/components/customText";
 
 export default function CustomText({
   text,

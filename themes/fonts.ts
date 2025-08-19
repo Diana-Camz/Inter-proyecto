@@ -27,7 +27,7 @@ export const fonts: Record<string, TextStyle> = {
   TextRegular: {
     fontFamily: `Plus Jakarta Sans`,
     fontWeight: "medium",
-    fontSize: 13,
+    fontSize: 14,
   },
   TextMedium: {
     fontFamily: `Plus Jakarta Sans`,
@@ -59,7 +59,7 @@ export const fonts: Record<string, TextStyle> = {
     fontSize: 16,
     fontWeight: 500,
   },
-  link: {
+  linkRegular: {
     fontFamily: `Plus Jakarta Sans`,
     fontWeight: "bold",
     fontSize: 14,
