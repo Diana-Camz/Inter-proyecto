@@ -42,8 +42,6 @@ export default function SignUp() {
   );
   const disabled = !(completedFields && accept);
 
-  console.log("Datos de registro:", registrationData);
-
   const handleSubmit = () => {
     setLoading(true);
     if (!validate()) {

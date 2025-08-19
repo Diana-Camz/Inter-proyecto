@@ -10,7 +10,6 @@ export default function CustomButton({
   onPress,
   disabled = false,
 }: ButtonProps) {
-  console.log(disabled);
   return (
     <TouchableOpacity
       style={[
