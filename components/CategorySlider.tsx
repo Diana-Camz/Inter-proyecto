@@ -6,11 +6,11 @@ import {
   Image,
   ImageSourcePropType,
   ListRenderItemInfo,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import coffeeCategories from '../constants/data/coffeeCategories.json';
+import CustomText from './ CustomText';
 
 interface Category {
     id: string;
@@ -44,7 +44,6 @@ const CategorySlider = () => {
             flatListRef.current.scrollToIndex({
                 index: index,
                 animated: true,
-                viewPosition: 0.1, // Centers the item
             });
         }
     };
@@ -65,15 +64,11 @@ const CategorySlider = () => {
                     style={categorySlider.categoryIcon}
                     resizeMode="contain"
                 />
-                <Text
-                    style={[
-                        categorySlider.categoryText,
-                        isSelected ? categorySlider.categoryTextSelected : categorySlider.categoryTextNormal,
-                    ]}
-                    numberOfLines={1}
-                >
-                    {item.name}
-                </Text>
+                <CustomText 
+                numberOfLines={1}
+                text={item.name}
+                type= { isSelected ? 'AvenirBodyBold' : 'TextSmall'}
+                />
             </TouchableOpacity>
         );
     };
@@ -100,9 +95,9 @@ const CategorySlider = () => {
             </View>
 
             <View style={categorySlider.productsContainer}>
-                <Text style={categorySlider.productsTitle}>
-                    {categories.find(c => c.id === selectedCategory)?.name}
-                </Text>
+              <CustomText text={categories.find(c => c.id === selectedCategory)?.name}
+                type='TitleBig'
+                />
             </View>
         </View>
     );

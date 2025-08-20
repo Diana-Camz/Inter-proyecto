@@ -1,12 +1,13 @@
+import { colors } from "@/themes";
 import { StyleSheet } from "react-native";
 
 export const categorySlider = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#f5f5f5' },
+    container: { 
+        flex: 1
+     },
     sliderContainer: { 
-        height: 77, 
-        backgroundColor: '#fff', 
-        borderBottomWidth: 1, 
-        borderBottomColor: '#e0e0e0' 
+        height: 80, 
+        backgroundColor: colors.white, 
     },
     sliderContent: { 
         paddingHorizontal: 12, 
@@ -20,25 +21,10 @@ export const categorySlider = StyleSheet.create({
         paddingHorizontal: 16,
     },
     categoryItemNormal: { 
-        height: 52, 
-        backgroundColor: '#f0f0f0' 
+        height: 80, 
     },
     categoryItemSelected: { 
-        height: 75, 
-        backgroundColor: '#8B4513' 
-    },
-    categoryText: { 
-        fontWeight: '600',
-        textAlign: 'center',
-        marginTop: 4,
-    },
-    categoryTextNormal: { 
-        fontSize: 12,
-        color: '#333' 
-    },
-    categoryTextSelected: { 
-        fontSize: 12, 
-        color: '#fff' 
+        height: 80, 
     },
     categoryIcon: { 
         width: 30, 
@@ -48,11 +34,5 @@ export const categorySlider = StyleSheet.create({
     productsContainer: { 
         flex: 1, 
         padding: 16 
-    },
-    productsTitle: { 
-        fontSize: 18, 
-        fontWeight: 'bold', 
-        marginBottom: 16, 
-        color: '#333' 
     },
 });
